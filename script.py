@@ -100,7 +100,7 @@ def mutate_addtomultifasta_seq(reverse_complement_sequence, removal_record_id):
 # Annotate the bed file accordingly as to what modifications we did!
 
 def create_bed_file(file, record_id):
-    with open('Vieuvirus.fn') as multifasta_file, open('updated_sequences.bed','w') as output_bed_file:
+    with open(file) as multifasta_file, open('updated_sequences.bed','w') as output_bed_file:
         for seq in SeqIO.parse(multifasta_file, 'fasta'):
             if seq.id == record_id:
                 output_bed_file.write('{}\t0\t{}\t{}\n'.format(seq.id, len(seq), 'Mutated sequence'))
